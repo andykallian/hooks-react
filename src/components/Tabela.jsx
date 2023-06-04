@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-const Tabela = ({vetor}) => {
+const Tabela = ({vetor, selecionar}) => {
+
+
+  const [termo, setTermo] = useState('');
+
   return (
-    <table className='table'>
+    <div>
+      <input type="text" onChange={e => setTermo(e.target.value)} placeholder='Informe o nome' className='form-control pesquisa' />
+      <table className='table'>
         <thead>
             <tr>
                 <th>#</th>
@@ -15,19 +21,19 @@ const Tabela = ({vetor}) => {
 
         <tbody>
           {
-            vetor.map((obj, indice) =>(
+            vetor.filter(obj => obj.nome.includes(termo)).map((obj, indice) =>(
               <tr key={indice}>
                 <td>{indice+1}</td>
                 <td>{obj.nome}</td>
                 <td>{obj.idade}</td>
                 <td>{obj.cidade}</td>
-                <td><button className='btn btn-success'>Selecionar</button></td>
+                <td><button onClick={() => selecionar(indice)} className='btn btn-success'>Selecionar</button></td>
               </tr>
             ))
           }
         </tbody>
-
-    </table>
+      </table>
+    </div>
   )
 }
 

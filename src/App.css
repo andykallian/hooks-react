@@ -56,3 +56,9 @@ form input{
 form input[type='button']{
   margin-right: 10px;
 }
+
+.pesquisa{
+  width: 50%;
+  margin: 5% auto;
+
+}
