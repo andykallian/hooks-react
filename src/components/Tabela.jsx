@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Tabela = () => {
+const Tabela = ({vetor}) => {
   return (
     <table className='table'>
         <thead>
@@ -14,7 +14,17 @@ const Tabela = () => {
         </thead>
 
         <tbody>
-            
+          {
+            vetor.map((obj, indice) =>(
+              <tr key={indice}>
+                <td>{indice+1}</td>
+                <td>{obj.nome}</td>
+                <td>{obj.idade}</td>
+                <td>{obj.cidade}</td>
+                <td><button className='btn btn-success'>Selecionar</button></td>
+              </tr>
+            ))
+          }
         </tbody>
 
     </table>
